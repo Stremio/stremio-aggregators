@@ -11,7 +11,7 @@ const aggr = Catalogs(addonStore.addons)
 
 aggr.on('finished', function() {
 	aggr.results.forEach(function(r) {
-		console.log(r.response.metas.slice(0, 5).map(function(x) { return x.name }))
+		console.log(r.addon.manifest.id, r.type, r.id, r.response.metas.slice(0, 5).map(function(x) { return x.name }))
 	})
 })
 // TEMP
