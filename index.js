@@ -1,4 +1,3 @@
-const detectFromURL = require('stremio-addon-client').detectFromURL
 
 const addonStore = require('./testAddons')
 // require('stremio-addon-client/lib/transports')
@@ -8,19 +7,12 @@ const Generic = require('./lib/generic')
 const Catalogs = require('./lib/catalogs')
 
 // TEMP
-
-/*Promise.all(addonURLs.map(function(x) { return detectFromURL(x) }))
-.then(function(results) {
-	const addons = results
-		.map(function(x) { return x.addon })
-		.filter(function(x) { return x })
-
-
-})*/
 const aggr = Catalogs(addonStore.addons)
 
 aggr.on('finished', function() {
-	console.log(aggr.results)
+	aggr.results.forEach(function(r) {
+		console.log(r.response.metas.slice(0, 5).map(function(x) { return x.name }))
+	})
 })
 // TEMP
 
