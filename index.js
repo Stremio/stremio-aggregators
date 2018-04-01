@@ -5,6 +5,7 @@ const addonURLs = require('./testAddons')
 // to persist addons
 
 const Generic = require('./lib/generic')
+const Catalogs = require('./lib/catalogs')
 
 // TEMP
 Promise.all(addonURLs.map(function(x) { return detectFromURL(x) }))
@@ -13,12 +14,7 @@ Promise.all(addonURLs.map(function(x) { return detectFromURL(x) }))
 		.map(function(x) { return x.addon })
 		.filter(function(x) { return x })
 
-	const aggr = Generic(addons)
-	addons.forEach(function(addon) {
-		addon.manifest.catalogs.forEach(function(cat) {
-			aggr.add(addon, 'catalog', cat.type, cat.id)
-		})
-	})
+	const aggr = Catalogs(addons)
 
 	aggr.on('finished', function() {
 		console.log(aggr.results)
@@ -28,7 +24,7 @@ Promise.all(addonURLs.map(function(x) { return detectFromURL(x) }))
 
 module.exports = {
 	Generic: Generic,
-	// Catalogs: Catalogs,
+	Catalogs: Catalogs,
 	// Streams: Streams,
 
 	// NOTE: stream sorting should be implemented, but elegant and minimal
