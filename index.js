@@ -1,27 +1,29 @@
 const detectFromURL = require('stremio-addon-client').detectFromURL
 
-const addons = require('./testAddons')
+const addonURLs = require('./testAddons')
 // require('stremio-addon-client/lib/transports')
 // to persist addons
 
 const Generic = require('./lib/generic')
 
 // TEMP
-addons.forEach(function(url) {
-	detectFromURL(url)
-	.then(function(res) {
-		if (res.addon) onAddon(res.addon)
-	})
-})
+Promise.all(addonURLs.map(function(x) { return detectFromURL(x) }))
+.then(function(results) {
+	const addons = results
+		.map(function(x) { return x.addon })
+		.filter(function(x) { return x })
 
-function onAddon(addon) {
-	addon.manifest.catalogs.forEach(function(cat) {
-		addon.get('catalog', cat.type, cat.id)
-		.then(function(resp) {
-			console.log(cat.type, cat.id, resp.metas.slice(0, 6).map(function(x) { return x.name }))
+	const aggr = Generic(addons)
+	addons.forEach(function(addon) {
+		addon.manifest.catalogs.forEach(function(cat) {
+			aggr.add(addon, 'catalog', cat.type, cat.id)
 		})
 	})
-}
+
+	aggr.on('finished', function() {
+		console.log(aggr.results)
+	})
+})
 // TEMP
 
 module.exports = {
