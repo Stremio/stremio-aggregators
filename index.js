@@ -8,5 +8,6 @@ module.exports = {
 	Catalogs: Catalogs,
 	Streams: Streams,
 
-	// NOTE: stream sorting should be implemented, but elegant and minimal
+	// TEMP
+	AddonCollection: require('./lib/addon-collection')
 }
