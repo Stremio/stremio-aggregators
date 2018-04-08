@@ -7,7 +7,4 @@ module.exports = {
 	Generic: Generic,
 	Catalogs: Catalogs,
 	Streams: Streams,
-
-	// TEMP
-	AddonCollection: require('./lib/addon-collection')
 }
