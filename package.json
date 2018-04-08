@@ -1,6 +1,6 @@
 {
   "name": "stremio-aggregators",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Aggregates catalogs and streams from Stremio Add-ons",
   "main": "index.js",
   "scripts": {
