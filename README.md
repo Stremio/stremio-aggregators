@@ -14,6 +14,11 @@ Usage:
 const addons = [] // this should be an array of instances of AddonClient, for example AddonCollection.addons
 const aggr = new Catalogs(addons)
 
+// aggr.results will be populated with entries of { addon, resource, type, id, extra, isReady, response, error }
+
+// .run() will request every object in aggr.results that are not isReady == true
+aggr.run()
+
 aggr.evs.on('updated', function() {
 	// do something with aggr.results
 })
