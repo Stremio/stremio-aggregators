@@ -10,7 +10,7 @@ Currrently it contains a few components
 
 Usage:
 
-```
+```javascript
 const addons = [] // this should be an array of instances of AddonClient, for example AddonCollection.addons
 const aggr = new Catalogs(addons)
 
