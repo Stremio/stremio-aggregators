@@ -23,9 +23,9 @@ tape('isCatalogSupported: extraSupported', function(t) {
 
 tape('isCatalogSupported: extraRequired', function(t) {
 	// all properties in catalog.extraRequired should be in extra
-	t.equal(isCatalogSupported(genCatalog(null, ['search']), null), false, 'no extra: should not match')
-	t.equal(isCatalogSupported(genCatalog(null, ['search']), { genre: 'foo' }), false, 'extra does not contain search: should not match')
-	t.equal(isCatalogSupported(genCatalog(null, ['search']), { search: 'foo' }), true, 'extra matches')
+	t.equal(isCatalogSupported(genCatalog(['search'], ['search']), null), false, 'no extra: should not match')
+	t.equal(isCatalogSupported(genCatalog(['search'], ['search']), { genre: 'foo' }), false, 'extra does not contain search: should not match')
+	t.equal(isCatalogSupported(genCatalog(['search'], ['search']), { search: 'foo' }), true, 'extra matches')
 
 	// additionally, if there are any other props in extra, they should be checked against catalog.extraSupported
 	t.equal(isCatalogSupported(genCatalog(['search'], ['search']), { search: 'foo', genre: 'foo' }), false, 'does not support genre')
