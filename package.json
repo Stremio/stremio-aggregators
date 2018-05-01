@@ -6,6 +6,9 @@
   "scripts": {
     "test": "node test/*"
   },
+  "devDependencies": {
+    "tape": "^4.9.0"
+  },
   "author": "Smart Code OOD",
   "license": "MIT"
 }
