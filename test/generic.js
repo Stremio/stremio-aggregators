@@ -27,6 +27,19 @@ tape('generic: emits proper events', function(t) {
 	aggr.evs.on('finished', function() {
 		t.ok('finished emitted')
 		t.equal(numberUpdatedEmitted, 1, 'updated emitted only once')
+		t.equal(aggr.isFinished(), true, 'isFinished true')
 		t.end()
 	})
+})
+
+
+tape('generic: isFinished false', function(t) {
+	let aggr = new Generic()
+
+	aggr.pushResult({ isReady: true, response: null })
+	aggr.pushResult({ isReady: false, response: null })
+
+	t.equal(aggr.isFinished(), false, 'isFinished is false')
+	
+	t.end()
 })
