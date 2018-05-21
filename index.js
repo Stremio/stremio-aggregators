@@ -3,7 +3,7 @@ const Catalogs = require('./lib/catalogs')
 const Streams = require('./lib/streams')
 const Metas = require('./lib/metas')
 
-const getStreamsCached = require('./lib/getStreamsCached')
+const getCached = require('./lib/getCached')
 
 module.exports = {
 	Generic: Generic,
@@ -11,5 +11,5 @@ module.exports = {
 	Streams: Streams,
 	Metas: Metas,
 
-	getStreamsCached: getStreamsCached,
+	getCached: getCached,
 }

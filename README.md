@@ -27,3 +27,7 @@ aggr.evs.on('finished', function() {
 })
 ```
 
+
+### `getCached(AggrConstructor)`
+
+Will return a function that takes the same args as `AggrConstructor`, but returns a cached instance if the args are the same
