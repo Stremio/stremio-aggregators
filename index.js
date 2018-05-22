@@ -12,4 +12,7 @@ module.exports = {
 	Metas: Metas,
 
 	getCached: getCached,
+
+	getStreamsCached: getCached(Streams),
+	getMetasCached: getCached(Metas),
 }
