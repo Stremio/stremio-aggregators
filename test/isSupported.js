@@ -1,9 +1,9 @@
-const tape = require('tape')
+var tape = require('tape')
 
-const isSupported = require('../lib/isSupported')
+var isSupported = require('../lib/isSupported')
 
 tape('isSupported: checks for resource and types', function(t) {
-	const m = { resources: ['catalog', 'stream'], types: ['movie', 'channel'] }
+	var m = { resources: ['catalog', 'stream'], types: ['movie', 'channel'] }
 	t.equal(isSupported(m, 'catalog', 'movie', '1'), true, 'all match')
 	t.equal(isSupported(m, 'stream', 'movie', '1'), true, 'all match - second resource')
 	t.equal(isSupported(m, 'catalog', 'channel', '1'), true, 'all match - second type')
@@ -14,7 +14,7 @@ tape('isSupported: checks for resource and types', function(t) {
 })
 
 tape('isSupported: checks for idPrefixes', function(t) {
-	const m = { resources: ['catalog'], types: ['movie'], idPrefixes: ['tt', 'yt_id:'] }
+	var m = { resources: ['catalog'], types: ['movie'], idPrefixes: ['tt', 'yt_id:'] }
 
 	t.equal(isSupported(m, 'catalog', 'movie', '1'), false, 'does not match')
 	t.equal(isSupported(m, 'catalog', 'movie', 'tt1'), true, 'matches first prefix')

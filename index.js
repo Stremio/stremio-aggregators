@@ -1,9 +1,9 @@
-const Generic = require('./lib/generic')
-const Catalogs = require('./lib/catalogs')
-const Streams = require('./lib/streams')
-const Metas = require('./lib/metas')
+var Generic = require('./lib/generic')
+var Catalogs = require('./lib/catalogs')
+var Streams = require('./lib/streams')
+var Metas = require('./lib/metas')
 
-const getCached = require('./lib/getCached')
+var getCached = require('./lib/getCached')
 
 module.exports = {
 	Generic: Generic,

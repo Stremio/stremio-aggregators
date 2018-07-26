@@ -1,12 +1,12 @@
-const tape = require('tape')
+var tape = require('tape')
 
-const Generic = require('../lib/generic')
+var Generic = require('../lib/generic')
 
 // @TODO: this should be much more extensive,
 // but we need to mock add-ons in order to do it
 
 tape('generic: emits proper events', function(t) {
-	let aggr = new Generic()
+	var aggr = new Generic()
 
 	aggr.pushResult({ isReady: true, response: null })
 	aggr.pushResult({ isReady: true, response: null })
@@ -18,7 +18,7 @@ tape('generic: emits proper events', function(t) {
 	// we expect that events will be emitted at least one tick after .run()
 	aggr.run()
 
-	let numberUpdatedEmitted = 0
+	var numberUpdatedEmitted = 0
 	aggr.evs.on('updated', function() {
 		t.ok('updated emitted')
 		numberUpdatedEmitted++
@@ -34,7 +34,7 @@ tape('generic: emits proper events', function(t) {
 
 
 tape('generic: isFinished false', function(t) {
-	let aggr = new Generic()
+	var aggr = new Generic()
 
 	aggr.pushResult({ isReady: true, response: null })
 	aggr.pushResult({ isReady: false, response: null })

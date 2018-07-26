@@ -1,6 +1,6 @@
-const tape = require('tape')
+var tape = require('tape')
 
-const isCatalogSupported = require('../lib/isCatalogSupported')
+var isCatalogSupported = require('../lib/isCatalogSupported')
 
 tape('isCatalogSupported: simple catalog', function(t) {
 	t.equal(isCatalogSupported({ type: 'movie', id: 'top' }, null), true, 'simple catalog, no extra')
