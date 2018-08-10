@@ -7,7 +7,7 @@ var Streams = require('../lib/streams')
 
 tape('getCached: basic functionality', function(t) {
 	var getCachedStreams = getCached(Streams)
-		
+
 	var addons = []
 	var inst1 = getCachedStreams(addons, '1', '2')
 	var inst2 = getCachedStreams(addons, '1', '2')
@@ -23,3 +23,5 @@ tape('getCached: basic functionality', function(t) {
 
 	t.end()
 })
+
+// @TODO: getCached: deep comparison of addons
