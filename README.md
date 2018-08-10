@@ -25,9 +25,14 @@ aggr.evs.on('updated', function() {
 aggr.evs.on('finished', function() {
 	// do something with aggr.results
 })
+
+// Also, for convenience, there is aggr.onFinished, which is a promise which is resolved when the results are finished
+// you can use aggr.onFinished.then() rather than chechking `aggr.isFinished()` and binding to the finished event if it's not
 ```
 
 
 ### `getCached(AggrConstructor)`
 
 Will return a function that takes the same args as `AggrConstructor`, but returns a cached instance if the args are the same
+
+Please keep in mind that this might return an `aggr` that has already finished all the results, so it won't emit `finished` event. For convenience, it is recommended that you use the `aggr.onFinished` promise in those cases

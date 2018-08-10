@@ -20,14 +20,18 @@ tape('generic: emits proper events', function(t) {
 
 	var numberUpdatedEmitted = 0
 	aggr.evs.on('updated', function() {
-		t.ok('updated emitted')
+		t.pass('updated emitted')
 		numberUpdatedEmitted++
 	})
 
 	aggr.evs.on('finished', function() {
-		t.ok('finished emitted')
+		t.pass('finished emitted')
 		t.equal(numberUpdatedEmitted, 1, 'updated emitted only once')
 		t.equal(aggr.isFinished(), true, 'isFinished true')
+	})
+
+	aggr.onFinished.then(function() {
+		t.pass('onFinished promise resolved')
 		t.end()
 	})
 })
