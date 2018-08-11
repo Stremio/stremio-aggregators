@@ -1,5 +1,4 @@
 require('./generic')
-require('./isSupported')
 require('./isCatalogSupported')
 require('./getCached')
 
