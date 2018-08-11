@@ -21,3 +21,21 @@ tape('isSupported: checks for idPrefixes', function(t) {
 	t.equal(isSupported(m, 'catalog', 'movie', 'yt_id:1'), true, 'matches second prefix')
 	t.end()
 })
+
+
+tape('isSupported: resource-specific types', function(t) {
+	var m = {
+		resources: [
+			{ name: 'stream', types: ['movie', 'series'], idPrefixes: ['tt'] },
+			{ name: 'meta', types: ['other'], idPrefixes: ['local:'] }
+		]
+	}
+
+	t.equal(isSupported(m, 'stream', 'movie', 'tt2'), true, 'stream-specific rules match')
+	t.equal(isSupported(m, 'stream', 'other', 'local:2'), false, 'stream-specific rules do not match')
+
+	t.equal(isSupported(m, 'meta', 'other', 'local:2'), true, 'meta-specific rules do match')
+	t.equal(isSupported(m, 'meta', 'movie', 'tt2'), false, 'meta-specific rules do not match')
+
+	t.end()
+})
