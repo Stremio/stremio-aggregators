@@ -35,6 +35,7 @@ tape('isSupported: resource-specific types', function(t) {
 	t.equal(isSupported(m, 'stream', 'other', 'local:2'), false, 'stream-specific rules do not match')
 
 	t.equal(isSupported(m, 'meta', 'other', 'local:2'), true, 'meta-specific rules do match')
+	t.equal(isSupported(m, 'meta', 'other', 'tt2'), false, 'meta-specific rules do not match')
 	t.equal(isSupported(m, 'meta', 'movie', 'tt2'), false, 'meta-specific rules do not match')
 
 	t.end()
